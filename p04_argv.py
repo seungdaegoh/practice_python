@@ -1,6 +1,7 @@
+
+'''
+
 import sys
-
-
 param_n = len(sys.argv);
 
 if  (param_n >= 2) :
@@ -11,7 +12,7 @@ if  (param_n >= 3) :
 
 if  (param_n >= 4) :
 	print(sys.argv[3]) 
-
+'''
 
 print("End of Program");
 
