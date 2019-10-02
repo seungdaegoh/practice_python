@@ -1,5 +1,5 @@
-#! /home/peter/anaconda3/bin/python3
 #! /usr/bin/python3
+#! /home/peter/anaconda3/bin/python3
 
 import argparse
 import os
@@ -24,6 +24,17 @@ if (len(d_str) != 1) :
 print( 'delimiter str.len = ', len( d_str ), 'char = [%s]' %(d_str[0]) )
 print( "args.fields = ", args.fields )
 
+f_str =  args.fields
+
+print( 'f_str = ' , f_str, 'f_str[0]-\'0\' = %d' %(ord(f_str[0]) - ord('0')))
+st_i = ord(f_str[0]) - ord('0')
+if (len(f_str) >= 2 and f_str[1] == '-') :
+    ed_i = ord(f_str[2]) - ord('0')
+else : 
+    ed_i = st_i
+
+print( 'st_i, ed_i = ', st_i, ed_i)
+
 '''
 # try 1
 while True:
@@ -34,34 +45,26 @@ while True:
 '''
 
 for line in sys.stdin:
-	if ( "\n"  not in line ) :
-		print ("xxx")
-		break
-	print(line, end = '')
+    if ( "\n"  not in line ) :
+    #print ("end of input")
+        break
+
+    #print(line, end = '')
+
+    splited = line.split(d_str)
+
+    idx = 0
+    for stuff in splited :
 
 
+        #print('stuff idx:', idx, '[', stuff, ']')
+    
+        if (idx >= st_i and idx <= ed_i) :
+            print(stuff, end = ' ')
+
+        idx += 1
+
+    print('')
 	
-'''
-
-flist = args.files
-
-for fname in flist:
-
-    print("//----------- in file : ----------------- ", fname)
-
-    f = open(fname, 'r')
-    lines = f.readlines()
-
-    nline = 1
-    for line in lines:
-        nline += 1
-
-        if (line.find( key_word ) != -1): 
-            print('line #', nline , ":", line, end = '')
-
-    f.close()
-
-
-'''
 print('End of program')
 
