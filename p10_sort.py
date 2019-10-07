@@ -29,13 +29,16 @@ for line in in_method:
         break
 
     in_lines.append(line)
+print("xxxx___ ",
+        in_lines )
+print("____xxxx")
 
-    if (args.num_sort):
-        lines = sorted( in_lines, reverse=args.reverse, key=int)
-    elif (args.ignore_case) :
-        lines = sorted( in_lines, reverse=args.reverse, key=str.lower)
-    else :
-        lines = sorted( in_lines, reverse=args.reverse)
+if (args.num_sort):
+    lines = sorted( in_lines, reverse=args.reverse, key=int)
+elif (args.ignore_case) :
+    lines = sorted( in_lines, reverse=args.reverse, key=str.lower)
+else :
+    lines = sorted( in_lines, reverse=args.reverse)
 
 #print(in_lines);
 
