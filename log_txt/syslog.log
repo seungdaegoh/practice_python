@@ -1,0 +1,28 @@
+Sep 28 05:33:54 mdm9607 local7.info TelephonyManagerService[782]: RTNETLINK answers: No such file or directory
+Sep 28 16:33:09 mdm9607 local7.info start[442]: terminate called after throwing an instance of 'std::logic_error'
+Sep 28 16:33:09 mdm9607 local7.info start[442]: what():  basic_string::_S_construct null not valid
+Sep 28 16:33:21 mdm9607 local7.info TelephonyManagerService[7449]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Sep 28 16:33:25 mdm9607 local7.info TelephonyManagerService[7588]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Sep 28 16:34:11 mdm9607 local7.info TelephonyManagerService[7588]: RTNETLINK answers: No such file or directory
+Sep 28 16:34:12 mdm9607 local7.info TelephonyManagerService[7588]: RTNETLINK answers: File exists
+Sep 28 16:34:13 mdm9607 local7.info TelephonyManagerService[7588]: RTNETLINK answers: File exists
+Jan  1 00:00:37 mdm9607 local7.info start[441]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Jan  1 00:00:37 mdm9607 local7.info start[441]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Jan  1 00:00:37 mdm9607 local7.info start[441]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Jan  1 00:00:37 mdm9607 local7.info start[441]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Jan  1 00:00:37 mdm9607 local7.info start[441]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Sep 26 05:33:20 mdm9607 local7.info ApplicationManagerService[560]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Sep 28 18:25:19 mdm9607 local7.info AlarmManagerService[680]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Sep 28 18:25:19 mdm9607 local7.info ConfigurationManagerService[688]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Sep 28 18:25:19 mdm9607 local7.info vifManagerService[661]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Sep 28 18:25:19 mdm9607 local7.info PowerManagerService[674]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Sep 28 18:25:19 mdm9607 local7.info LocationManagerService[640]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Sep 28 18:25:19 mdm9607 local7.info DiagManagerService[666]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Sep 28 18:25:19 mdm9607 local7.info AudioManagerService[657]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Sep 28 18:25:19 mdm9607 local7.info SystemManagerService[700]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Sep 28 18:25:20 mdm9607 local7.info SystemManagerService[700]: Get property failed
+Sep 28 18:25:20 mdm9607 local7.info TelephonyManagerService[919]: LeakTracer 3.0.0 (shared library) -- LGPLv2
+Sep 28 18:25:26 mdm9607 local7.info DiagManagerService[666]: Get property failed
+Sep 28 18:25:33 mdm9607 local7.info vifManagerService[661]: Get property failed
+Sep 28 18:25:35 mdm9607 local7.info TelephonyManagerService[919]: RTNETLINK answers: No such file or directory
+Sep 28 18:25:35 mdm9607 local7.info TelephonyManagerService[919]: RTNETLINK answers: No such file or directory
