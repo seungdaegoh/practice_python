@@ -1,5 +1,5 @@
-#! /home/peter/anaconda3/bin/python3
 #! /usr/bin/python3
+#! /home/peter/anaconda3/bin/python3
 
 import argparse
 import sys
@@ -13,10 +13,11 @@ in_method = sys.stdin
 ulist = [];
 
 for line in in_method:
+	"""
 	if ( "\n"  not in line ) :
 		print ("____end of input___")
 		break
-
+	"""
 
 	if (line not in ulist) :
 		#print("same : ", line);
