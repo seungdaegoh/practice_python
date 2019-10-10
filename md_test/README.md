@@ -37,4 +37,5 @@ J[IN: timeline_**.csv] --> H(make_html)
 H --> O[OUT: result.html]
 ```
 
-![ex_screenshot](./img/screenshot.png)
+![LA](LA1.png)
+![LA](LA2.png)
