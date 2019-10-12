@@ -28,7 +28,7 @@
 ## todo
 
   + LA
-    - **html : find out a way of showing popup txt**
+    - LA_base src
 
   + Data Science
 
@@ -36,3 +36,14 @@
 ## doing
 
   + practice_python LIST
+
+
+## done
+
+  + LA
+    - ~~html : find out a way of showing popup txt~~
+
+```
+                [new Date(2010,8,1,12,0,0), , '<div title="Actual: popup_report"> my_Report </div><br>' +
+                        '<img src="img/attachment-icon.png" style="width:32px; height:32px;">']
+```
