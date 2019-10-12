@@ -27,8 +27,8 @@
 
 ## todo
 
-  + LA
-    - html>  find out a way of showing popup txt
+#### LA
+== html find out a way of showing popup txt ==
 
   + Data Science
 
