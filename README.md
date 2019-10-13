@@ -32,19 +32,25 @@
 
   
     + LA 
-      - in : log_dirs (multiple)
       - in : key_word  file 
-      - in : proc_**  excute evnironment / log_type
+      - in : proc_**  excute environment / log_type
+      - in : log_dirs (multiple)
       - out : execute  proc_**
     
     + proc_main
-      - in : log_dir (single)
-      - in : req_type (file_type : ex> main, radio, system)
       - in : key_word file
+      - in : req_type (file_type : ex> main, radio, system)
+      - in : log_dir (single)
       - out : timeline_**
     
     + `Data` key_word
-      - log_type, tag_id, msg
+      - FORMAT : log_type, tag_id, search_word, show_msg, icon_id
+      
+    + `Data` proc_parsing_type.cfg
+      - FORMAT : log_type, file_name, proc_name, shell_name, envir_para
       
     + `Data` timeline_**
-      - st_time, ed_time, tag_id, msg, full_msg
+      - FORMAT : st_time, ed_time, show_msg[= tag_id +'--' + search_word], icon_id, tag_id, full_msg
+      
+    + `Data` icon.cfg
+      - FORMAT : icon_id, icon_html_txt
