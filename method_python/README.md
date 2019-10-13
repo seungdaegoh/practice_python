@@ -1,3 +1,10 @@
+## Run system Command
+
+### using  subprocess
+```
+subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, capture_output=False, shell=False, cwd=None, timeout=None, check=False, encoding=None, errors=None, text=None, env=None, universal_newlines=None)
+```
+## Multi Processing
 
 ### using treading
 ```
