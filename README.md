@@ -34,13 +34,15 @@
     + LA 
       - in : key_word  file 
       - in : proc_**  excute environment / log_type
-      - in : log_dirs (multiple)
+      - in : log_dirs , zip file
       - out : execute  proc_**
+      - task : unzip file, list files, execut proper proc_** program
+      
     
     + proc_main
       - in : key_word file
       - in : req_type (file_type : ex> main, radio, system)
-      - in : log_dir (single)
+      - in : log_files
       - out : timeline_**
     
     + `Data` key_word
