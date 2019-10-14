@@ -36,7 +36,7 @@
       - in : proc_**  excute environment / log_type
       - in : log_dirs , zip file
       - out : execute  proc_**
-      - task : unzip file, list files, execut proper proc_** program
+      - task : get hash-value (sha1sum),  unzip file, list files, execut proper proc_** program
       
     
     + proc_main
