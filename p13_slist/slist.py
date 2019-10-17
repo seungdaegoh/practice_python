@@ -116,10 +116,17 @@ class SingleLinkedList(object):
 
 
 	def first(self):
-		""" return first item """  #TODO
+		""" return first item """
+		if (self.begin):
+			return self.begin.value
+		return None
+
 
 	def last(self):
-		""" return last item """  #TODO
+		""" return last item """
+		if (self.end):
+			return self.end.value
+		return None
 
 
 	def count(self):
@@ -128,7 +135,18 @@ class SingleLinkedList(object):
 
 
 	def get(self, index):
-		""" get index-item """  #TODO
+		""" get index-item """
+
+		if (index >= self.cnt):
+			return None
+		if (index < 0):
+			return None
+
+		chk = self.begin
+		while (index > 0):
+			chk = chk.next
+			index -= 1
+		return chk.value
 
 	def dump(self, mark):
 		""" print all list's item """

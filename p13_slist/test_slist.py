@@ -66,6 +66,50 @@ def test_remove():
 	assert colors.remove("Zinc White") == 0
 
 
+def test_first():
+
+	colors = SingleLinkedList()
+	colors.push("Cadmium Red Light")
+	assert colors.first() == "Cadmium Red Light"
+	colors.push("Hansa Yellow")
+	assert colors.first() == "Cadmium Red Light"
+	colors.shift("Pthalo Green")
+	assert colors.first() == "Pthalo Green"
+
+
+def test_last():
+	colors = SingleLinkedList()
+	colors.push("Cadmium Red Light")
+	assert colors.last() == "Cadmium Red Light"
+	colors.push("Hansa Yellow")
+	assert colors.last() == "Hansa Yellow"
+	colors.shift("Pthalo Green")
+	assert colors.last() == "Hansa Yellow"
+
+
+def test_get():
+	colors = SingleLinkedList()
+	colors.push("Vermillion")
+	assert colors.get(0) == "Vermillion"
+	colors.push("Sap Green")
+	assert colors.get(0) == "Vermillion"
+	assert colors.get(1) == "Sap Green"
+	colors.push("Cadmium Yellow Light")
+	assert colors.get(0) == "Vermillion"
+	assert colors.get(1) == "Sap Green"
+	assert colors.get(2) == "Cadmium Yellow Light"
+
+	assert colors.pop() == "Cadmium Yellow Light"
+	assert colors.get(0) == "Vermillion"
+	assert colors.get(1) == "Sap Green"
+	assert colors.get(2) == None
+
+	colors.pop()
+	assert colors.get(0) == "Vermillion"
+	colors.pop()
+	assert colors.get(0) == None
+
+	
 
 
 #test_push()
@@ -76,5 +120,15 @@ def test_remove():
 #print("test shift")
 #test_shift()
 
-print("test remove")
-test_remove()
+#print("test remove")
+#test_remove()
+
+print("test first()")
+test_first()
+
+print("test last()")
+test_last()
+
+
+print("test get()")
+test_get()
