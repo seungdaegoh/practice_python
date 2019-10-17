@@ -6,6 +6,7 @@
 
   + LA
     - LA_base src
+    - python--django / media / output html  would be located with RESULT of log files
 
   + Data Science
 
