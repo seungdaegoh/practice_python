@@ -68,3 +68,45 @@ if __name__ == "__main__":
 	print(f"Result: {total}")
 
 ```
+
+# Useful Python Package
+
+## pytest  (testing framework)
+
+```
+
+$ pip install -U pytest
+
+	# content of test_sample.py
+	def func(x):
+    		return x + 1
+
+	def test_answer():
+    		assert func(3) == 5
+	#-------------------
+	
+$ pytest
+
+```
+
+## Hypothesis
+https://hypothesis.readthedocs.io/en/latest/
+https://hypothesis.works/
+
+pip install hypothesis
+
+```
+
+from hypothesis import given
+import hypothesis.strategies as st
+
+
+@given(st.integers(), st.integers())
+def test_ints_are_commutative(x, y):
+    assert x + y == y + x
+    
+```
+
+
+## Black  (Python code formatter)
+https://github.com/psf/black
