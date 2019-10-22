@@ -38,6 +38,20 @@ $  source myvenv/bin/activate
     or  $  . myvenv/bin/activate
 ```
 
+##  Python Tools
+
+```
+> Code Formatter
+>>python 3.6 아래  version   (  Python 3.6.0+  일땐  black) 
+
+  $ pip install yapf
+  $ yapf proc_main_log.py -i
+
+
+
+```
+
+
 ## idea
 
   + Log Analayzer (LA)
