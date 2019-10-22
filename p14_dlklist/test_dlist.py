@@ -9,7 +9,7 @@ def test_push( ):
 	assert colors.count() == 1
 	colors.push("Ultramarine Blue")
 	assert colors.count() == 2
-'''
+
 
 def test_pop( ):
 	colors = DoubleLinkedList()
@@ -47,6 +47,7 @@ def test_shift():
 	assert colors.count() == 1
 	assert colors.pop() == "Carbazole Violet"
 	assert colors.count() == 0
+
 
 def test_remove():
 	colors = DoubleLinkedList()
@@ -108,7 +109,6 @@ def test_get():
 	colors.pop()
 	assert colors.get(0) == None
 
-'''	
 
 
 #test_push()
