@@ -26,6 +26,11 @@
                         '<img src="img/attachment-icon.png" style="width:32px; height:32px;">']
 ```
 
+##  Environment
+
+```
+$  sudo pip install virtualenv
+```
 
 ## idea
 
