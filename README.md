@@ -30,6 +30,12 @@
 
 ```
 $  sudo pip install virtualenv
+
+$  python -m venv myvenv
+
+$  source myvenv/bin/activate
+
+    or  $  . myvenv/bin/activate
 ```
 
 ## idea
