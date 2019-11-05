@@ -110,3 +110,6 @@ def test_ints_are_commutative(x, y):
 
 ## Black  (Python code formatter)
 https://github.com/psf/black
+
+### yapf (formatter)
+https://github.com/google/yapf
