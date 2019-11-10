@@ -1,0 +1,361 @@
+<html>
+<head>
+    <title>Show history</title>
+
+    <style type="text/css">
+        body {font: 8pt arial;}
+    </style>
+
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="../timeline.js"></script>
+    <link rel="stylesheet" type="text/css" href="../timeline.css">
+	
+	<script type="text/javascript" src="../graph.js"></script>
+    <!--[if IE]><script type="text/javascript" src="../excanvas.js"></script><![endif]-->
+    <link rel="stylesheet" type="text/css" href="../graph.css">
+
+    <script type="text/javascript">
+        google.load("visualization", "1");
+
+        // Set callback to run when API is loaded
+        google.setOnLoadCallback(drawVisualization);
+
+        var vis1 = null;
+        var graph = null;
+
+		var min_date = new Date(2019, 7, 1,  12, 0, 0);
+		var max_date = new Date(2019, 8, 15, 12, 0, 0);
+		
+		var data1 = null;
+		
+		var dataA = {
+			'label': 'Function A',
+			'data': []
+		};
+		
+		function create_timeline_data() {
+			// Create and populate a data table.
+            data1 = new google.visualization.DataTable();
+            data1.addColumn('datetime', 'start');
+            data1.addColumn('datetime', 'end');
+            data1.addColumn('string', 'content');
+			data1.addColumn('string', 'group');
+
+			var track1 = "top_info"
+			data1.addRows([
+                [new Date(2019,7,26), new Date(2019,8,2), 'Traject A',  track1],
+                [new Date(2019,7,23), new Date(2019,7,30), 'Traject B',  track1],
+                [new Date(2019,7,27), new Date(2019,7,31), '<div class="bar"  title="Actual: ttt"> my_test </div>',  track1 ]
+            ]);
+			
+			var track2 = "proc_info"
+            data1.addRows([
+                [new Date(2019,7,23), , 'Conversation<br>' +
+                        '<img src="img/comments-icon.png" style="width:32px; height:32px;">',  track2],
+                [new Date(2019,7,23,23,0,0), , 'Mail from boss<br>' +
+                        '<img src="img/mail-icon.png" style="width:32px; height:32px;">',  track2],
+                [new Date(2019,7,24,16,0,0), , 'Report',  track2],
+                [new Date(2019,7,28), , 'Memo<br>' +
+                        '<img src="img/notes-edit-icon.png" style="width:48px; height:48px;">',  track2],
+                [new Date(2019,7,29), , 'Phone call<br>' +
+                        '<img src="img/Hardware-Mobile-Phone-icon.png" style="width:32px; height:32px;">',  track2],
+                [new Date(2019,8,1,12,0,0), , '<div title="Actual: popup_report"> my_Report </div><br>' +
+                        '<img src="img/attachment-icon.png" style="width:32px; height:32px;">',  track2]
+            ]);
+			
+
+		}
+		
+
+		function create_timeline_bar_data() {
+            // Create and populate a data table.
+
+            var maxNum = 5;
+            var d = new Date(2019, 7, 23);
+            for (var i = 0; i < 5; i++) {
+                //var hours = Math.round(1 + Math.random() * 7);
+                var hours = Math.round(1 + Math.random() * 7);
+                var start = new Date(d);
+                var end = new Date(d);
+                end.setHours(end.getHours() + 10 * hours);
+                
+
+                // create item with minimum requirement
+                //var num = Math.round(Math.random() * maxNum);    // number of members available
+				var num =  (i + 1);
+                var height = Math.round(num / maxNum * 20 + 10); // a percentage, with a lower bound on 20%
+                var style = 'height:' + height + 'px;';
+                var requirement = '<div class="requirement" style="' + style + '" ' +
+                        'title="Minimum requirement: ' + num + ' people">' + num + ' static_text' + '</div>';
+
+				
+                // create item with actual number
+                //num = Math.round(Math.random() * maxNum);    // number of members available
+				var num =  (i + 1);
+                height = Math.round(num / maxNum * 60 + 10); // a percentage, with a lower bound on 20%
+                var hue = Math.min(Math.max(height, 20), 80) * 1.2; // hue between 0 (red) and 120 (green)
+                var color = hsv2rgb(hue, 0.95, 0.95);
+                var borderColor = hsv2rgb(hue, 0.9, 0.9);
+                style = 'height:' + height + 'px;' +
+                        'background-color: ' + color + ';' +
+                        'border-top: 0px solid ' + borderColor + ';';
+                var actual = '<div class="bar" style="' + style + '" ' +
+                        ' title="Actual: ' + num + ' hidden popup_text' + ' people">' + num + ' static_text' + '</div>';
+
+				
+				var track3 = 'Team';
+				//data1.addRow([start, end, requirement + actual,  track3]);
+				//data1.addRow([start, end, requirement,  track3]);
+				data1.addRow([start, end, actual,  track3]);
+				
+                d = new Date(end.getTime()  +5 * 60*60*1000);  // + 5 hour
+            }
+		}
+		
+		function create_graph_data() {
+					// Create and populate a data table.
+			
+			var min_val = min_date.getTime();  // 1days = 24*60*60*1000
+			var max_val = max_date.getTime();
+			var range_val = max_val - min_val;
+
+			var i, imax = 1000;
+			var unit_val =  (range_val + imax - 1) / imax;
+			for (i = 0; i < imax; i++) {
+				dataA.data.push({
+					'date': new Date(min_val + (unit_val * i)),
+					'value': customFunction(unit_val * i),
+				});
+			}
+		}
+		
+			
+		
+        function createTimeline1() {
+            
+			create_timeline_data();
+			
+
+            // specify options
+            var options = {
+				width:  "100%",
+                height: "450px",
+				
+				min: min_date,                // lower limit of visible range
+                max: max_date,                // upper limit of visible range
+				
+				axisOnTop: "true",
+				
+				cluster : "true",
+				
+				eventMargin : 3,
+				
+                layout: "box",
+				//style: "box",
+				
+				groupsOrder: "false",
+				groupMinHeight: 100,
+            };
+
+            // Instantiate our timeline object.
+            vis1 = new links.Timeline(document.getElementById('timeline1'), options);
+
+            google.visualization.events.addListener(vis1, 'rangechange', onrangechange1);
+
+			create_timeline_bar_data();
+            // Draw our timeline with the created data and options
+            vis1.draw(data1);
+			
+			
+
+        }
+		
+		        /**
+         * Calculate the color based on the given value.
+         * @param {number} H   Hue, a value be between 0 and 360
+         * @param {number} S   Saturation, a value between 0 and 1
+         * @param {number} V   Value, a value between 0 and 1
+         */
+        var hsv2rgb = function(H, S, V) {
+            var R, G, B, C, Hi, X;
+
+            C = V * S;
+            Hi = Math.floor(H/60);  // hi = 0,1,2,3,4,5
+            X = C * (1 - Math.abs(((H/60) % 2) - 1));
+
+            switch (Hi) {
+                case 0: R = C; G = X; B = 0; break;
+                case 1: R = X; G = C; B = 0; break;
+                case 2: R = 0; G = C; B = X; break;
+                case 3: R = 0; G = X; B = C; break;
+                case 4: R = X; G = 0; B = C; break;
+                case 5: R = C; G = 0; B = X; break;
+
+                default: R = 0; G = 0; B = 0; break;
+            }
+
+            return "RGB(" + parseInt(R*255) + "," + parseInt(G*255) + "," + parseInt(B*255) + ")";
+        };
+		
+		
+		
+		//---------------------------------------------------  STATIC VIEW -------------------
+		
+
+		function createRangesBelowThreshold(startDate, endDate) {
+			var ranges = [];
+				
+			// method
+			var st = new Date(startDate);
+			var ed = new Date(endDate);
+			
+			var st_date_str = st.toString()
+			var ed_date_str = ed.toString()
+			
+			ranges.push({
+				'start': st,
+				'end': ed,
+				'text': 'timeline',
+				'title': 'Area:' + st_date_str + "~" + ed_date_str,
+			});
+			return ranges;
+		}
+
+		
+		
+		function customFunction(x) {
+            return Math.sin(x / 100000000) * Math.cos(x / 50000000) * 10;
+        }
+		
+
+
+		// specify options
+		var options_g = null;
+		
+        function redraw_g(startDate, endDate) {
+
+			graph.setVisibleChartRange(min_date, max_date);
+			
+			
+			var threshold_S = {
+				'label': 'timeline_showing',
+				'type': 'area',
+				'data': createRangesBelowThreshold(startDate, endDate)
+			};
+			
+			var st_date_str = startDate.toGMTString()
+			var ed_date_str = endDate.toGMTString()
+
+            // TODO: redraw works wrong when still moving the graph (mouse is down)
+            document.title = "Data History";
+			//document.title = st_date_str +"~" + ed_date_str;
+
+			graph.draw([threshold_S, dataA], options_g);
+            graph.setValueRangeAuto();
+        }
+		
+
+
+		function createTime_graph() {
+
+			create_graph_data()
+			
+			var thresholdA = {
+				'label': 'some^^',
+				'type': 'area',
+				'data': createRangesBelowThreshold(min_date, max_date)
+			};
+
+            // Instantiate our graph object.
+            graph = new links.Graph(document.getElementById('mygraph'));
+
+            // Add event listeners
+            google.visualization.events.addListener(graph, 'rangechanged', onrangechanged_g);
+			
+			// specify options
+			var options = {width:  "100%",
+				height: "250px",
+				lines: [
+					{
+						// Threshold A
+						//legend: false,
+						color:     'rgba(51, 102, 204, 0.1)',
+						textColor: 'rgba(51, 102, 204, 1)'
+					},
+					{
+						// Function A
+						color: 'rgb(51, 102, 204)'
+					}
+				]
+			};
+			options_g = options;
+		
+
+            // Draw our graph with the created data and options
+
+			graph.draw([thresholdA, dataA], options_g);
+		}
+
+
+        // Called when the Visualization API is loaded.
+        function drawVisualization() {
+            createTimeline1();
+			createTime_graph();
+        }
+
+
+        function onrangechange1() {
+            var range = vis1.getVisibleChartRange();
+			redraw_g(range.start, range.end);
+        }
+
+		function onrangechanged_g() {
+			// adjust the values of startDate and endDate
+			//var range = graph.getVisibleChartRange();
+			//redraw_g(range.start, range.end);
+			
+			graph.setVisibleChartRange(min_date, max_date);
+		}
+
+
+    </script>
+	
+	
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses'],
+          ['2013',  1000,      400],
+          ['2014',  1170,      460],
+          ['2015',  660,       1120],
+          ['2016',  1030,      540]
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+
+</head>
+
+<body>
+<p>When moving one timeline, the other moves along.</p>
+<div id="timeline1"></div>
+<br>
+<div id="mygraph"></div>
+<br>
+<div id='chart_div'></div>
+
+
+</body>
+</html>
