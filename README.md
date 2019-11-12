@@ -27,11 +27,11 @@
 ```
 $  sudo pip install virtualenv
 
-$  python -m venv myvenv
+$  virtualenv venv
 
-$  source myvenv/bin/activate
+$  source venv/bin/activate
 
-    or  $  . myvenv/bin/activate
+    or  $  .  venv/bin/activate
 ```
 
 ##  Python Tools
