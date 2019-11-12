@@ -113,3 +113,20 @@ https://github.com/psf/black
 
 ### yapf (formatter)
 https://github.com/google/yapf
+
+
+
+##  faster  python
+
+###  PyPy
+```
+$   sudo apt-get install pypy
+```
+
+###  Nuitka
+
+```
+$   sudo apt install Nuitka
+$   sudo apt install clang
+```
+
