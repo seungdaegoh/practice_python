@@ -121,12 +121,17 @@ https://github.com/google/yapf
 ###  PyPy
 ```
 $   sudo apt-get install pypy
+
+$  ./pypy3.5 pystone.py
 ```
 
 ###  Nuitka
 
 ```
-$   sudo apt install Nuitka
-$   sudo apt install clang
+$   sudo apt-get install Nuitka
+$   sudo apt-get install clang
+
+$   nuitka pystone.py
+$  ./pystone.exe 500000 
 ```
 
