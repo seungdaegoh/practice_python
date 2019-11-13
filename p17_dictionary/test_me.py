@@ -22,7 +22,7 @@ def test_speed():
     key = randomString()
     value = randomString()
 
-    for i in range(10_000):
+    for i in range(1_000):
         key = randomString()
         value = randomString()
 
@@ -83,12 +83,12 @@ if (__name__ == "__main__"):
 
     print("-" * 40)
 
-    import ttt
+    import test_me
 
-    for i in dir(ttt):
-        item = getattr(ttt, i)
+    for i in dir(test_me):
+        item = getattr(test_me, i)
         if callable(item):
-#       print("__what?___", item)
+            print("__what?___", item)
             item()
 
     print("End of Job")
