@@ -12,6 +12,7 @@ def randomString(stringLength=10):
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(stringLength))
 
+
 def test_speed():
     print(__name__, "@"*25)
     print(sys._getframe().f_code.co_name)
@@ -22,7 +23,7 @@ def test_speed():
     key = randomString()
     value = randomString()
 
-    for i in range(1_000):
+    for i in range(3):
         key = randomString()
         value = randomString()
 
@@ -30,6 +31,8 @@ def test_speed():
         states.set(key, value)
         get_value = states.get(key)
         assert(get_value == value)
+
+    states.list()
 
 
 def test_set():
@@ -40,8 +43,29 @@ def test_set():
     states.set('Florida', 'FL')
     _state = states.get('Florida')
 
-    assert(_state == 'FL')
+    #assert(_state == 'FL')
 
+def test_get():
+    print(__name__, "@"*25)
+    print(sys._getframe().f_code.co_name)
+    print(__name__, "@"*25)
+    states = Dictionary()
+    states.set('Oregon', 'OR')
+    _state = states.get('Oregon')
+    assert(_state == 'OR')
+
+    states.set('California', 'CA')
+    states.set('New York', 'NY')
+    states.set('Michigan', 'MI')
+
+    states.list()
+
+    states.delete("New York")
+    states.delete("Oregon")
+
+    states.list()
+    _state = states.get('New York')
+    assert(_state == 'NY')
 
 
 '''
