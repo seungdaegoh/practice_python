@@ -27,7 +27,7 @@ def test_speed():
         key = randomString()
         value = randomString()
 
-        print("KEY=", key, "VALUE=", value)
+        print("<<KEY=", key, "VALUE=", value, ">>")
         states.set(key, value)
         get_value = states.get(key)
         assert(get_value == value)
@@ -41,9 +41,7 @@ def test_set():
     print(__name__, "@"*25)
     states = Dictionary()
     states.set('Florida', 'FL')
-    _state = states.get('Florida')
 
-    #assert(_state == 'FL')
 
 def test_get():
     print(__name__, "@"*25)
@@ -51,8 +49,25 @@ def test_get():
     print(__name__, "@"*25)
     states = Dictionary()
     states.set('Oregon', 'OR')
+    states.set('New York', 'NY')
+    states.set('Michigan', 'MI')
+
     _state = states.get('Oregon')
     assert(_state == 'OR')
+	
+    _state = states.get('Michigan')
+    assert(_state == 'MI')
+	
+    _state = states.get('New York')
+    assert(_state == 'NY')
+
+
+def test_remove():
+    print(__name__, "@"*25)
+    print(sys._getframe().f_code.co_name)
+    print(__name__, "@"*25)
+    states = Dictionary()
+    states.set('Oregon', 'OR')
 
     states.set('California', 'CA')
     states.set('New York', 'NY')
@@ -60,47 +75,31 @@ def test_get():
 
     states.list()
 
+    _state = states.get('New York')
+    assert(_state == 'NY')
+
     states.delete("New York")
     states.delete("Oregon")
 
     states.list()
+    _state = states.get('Oregon')
+    assert(_state == None)
+	
     _state = states.get('New York')
-    assert(_state == 'NY')
+    assert(_state == None)
+	
+	
 
 
-'''
-# create a mapping of state to abbreviation
-states = Dictionary()
-states.set('Oregon', 'OR')
-states.set('Florida', 'FL')
-states.set('California', 'CA')
-states.set('New York', 'NY')
-states.set('Michigan', 'MI')
-
-
-# create a basic set of states and some cities in them
-cities = Dictionary()
-cities.set('CA', 'San Francisco')
-cities.set('MI', 'Detroit')
-cities.set('FL', 'Jacksonville')
-cities.set('NY', 'New York')
-cities.set('OR', 'Portland')
-'''
-
-'''
-# print(every state abbreviation
-print('-' * 10)
-states.list()
-
-# print(every city in state
-print('-' * 10)
-cities.list()
-
-'''
 
 if (__name__ == "__main__"):
 
     print("Hi")
+    req_version = (3,6)
+    sys_version = sys.version_info
+    print("REQ_V=", req_version, "SYS_VER=", sys_version)
+    print("REQ_V <= SYS_VER ? =", req_version <= sys_version)
+
     print("Name=", __name__)
     print("File=", __file__)
     print(dir())

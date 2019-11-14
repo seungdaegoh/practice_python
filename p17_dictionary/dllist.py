@@ -1,3 +1,5 @@
+import sys
+
 class DoubleLinkedListNode(object):
     def __init__(self, value, nxt, prev):
         self.value = value
@@ -7,7 +9,12 @@ class DoubleLinkedListNode(object):
     def __repr__(self):
         nval = self.next and self.next.value or None
         pval = self.prev and self.prev.value or None
+
+        '''
+        #req_version = (3,6)
         return f"[{self.value}, {repr(nval)}, {repr(pval)}]"
+        '''
+        return "[{}, {}, {}]".format(self.value, nval, pval)
 
 
 class DoubleLinkedList(object):
@@ -116,6 +123,8 @@ class DoubleLinkedList(object):
             prv.next = nxt
         if (nxt):
             nxt.prev = prv
+
+        self._cnt -= 1
 
     def remove(self, obj):
         """remove that is exactly match with """
