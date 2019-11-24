@@ -12,6 +12,8 @@ class BSTreeNode(object):
     def __repr__ (self):
         return "BSTreeNode[L:{},R:{}, key={}, value={}".format(self.left != None, self.right != None, self.key, self.value)
 
+
+
 class  BSTree(object):
 
     def __init__(self):
@@ -85,12 +87,12 @@ class  BSTree(object):
 
 
 
-
     def delete(self, key):
         node = self.root
         # search
         while (node):
             if (node.key == key):
+                 #node = self.del_node(node)
                 self.del_node(node)
                 return
 
@@ -104,10 +106,89 @@ class  BSTree(object):
                 print("The key does not exist!")
                 return
 
+
+    def insert_node(self, node, inode):
+
+        parent = node
+        while (1):
+            #print("__node__=", node)
+            if (node == None):
+                if (parent_left):
+                    parent.left = inode
+                else:
+                    parent.right = inode
+                break
+
+
+            if (node.key > ind.key):
+                parent = node
+                parent_left = True
+                node = node.left
+
+            elif (node.key < ind.key):
+                parent = node
+                parent_left = False
+                node = node.right
+
+            else:
+                print("Same Key !! Error")
+                break
+
+
     
     def del_node(self, node):
-        print("TODO")
-        print("The key=", node.key, "deleted")
+
+        key = node.key
+        lcnt = 0
+        rcnt = 0
+        ln = node.left
+        rn = node.right
+
+        if (ln):
+            lcnt = self.count(ln)
+
+        if (rn):
+            rcnt = self.count(rn)
+
+        """
+        if (lcnt > rcnt):
+            # replace current node as left node
+            # add right node  to left node
+        else:
+            # replace current node as right node
+            # add left node  to right node
+        """
+
+        if (lcnt > rcnt):
+            node = ln 
+            if (rcnt > 0):
+                self.insert_node(node, rn)
+        else:
+            node = rn 
+            if (lcnt > 0):
+                self.insert_node(node, ln)
+           
+        print("____The key=", key, "deleted")
+
+
+
+
+    def count(self, node = None):
+
+        cnt = 0;
+        if (node == None):
+            node = self.root
+
+        if (node.left):
+            cnt += self.count(node.left)
+
+        if (node):
+            cnt += 1
+
+        if (node.right):
+            cnt += self.count(node.right)
+
+        return cnt;
 
 
     def list(self, node = None, msg = None):

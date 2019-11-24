@@ -44,4 +44,23 @@ def test_get():
     assert(tree.get("current").value == "Python")
 
 
-test_list()
+def test_delete():
+
+    tree = BSTree()
+
+    tree.set("old", "C program")
+    tree.set("current", "Python")
+    tree.set("future", "AI")
+
+    tree.delete("old")
+    tree.list(None, "Print two nodes ~~")
+
+    print("OLD=", tree.get("old"))
+    assert(tree.get("old") == None)
+
+    tree.delete("current")
+    tree.list(None, "Print one nodes ~~")
+
+    print("CURRENT=", tree.get("current"))
+    assert(tree.get("current") == None)
+
