@@ -42,6 +42,9 @@ class  BSTree(object):
 
 
     def set(self, key, value):
+        if (self.root == None):
+            self.root = BSTreeNode(None, None)
+
         node = self.root
         parent = node
 
@@ -89,50 +92,29 @@ class  BSTree(object):
 
     def delete(self, key):
         node = self.root
+        parent = node
         # search
         while (node):
             if (node.key == key):
-                 #node = self.del_node(node)
-                self.del_node(node)
+                if (parent == self.root):
+                    self.root = self.del_node(node)
+                elif (parent.left == node):
+                    parent.left = self.del_node(node)
+                elif (parent.right == node):
+                    parent.right = self.del_node(node)
                 return
 
             elif (node.key > key):
+                parent = node
                 node = node.left
 
             elif (node.key < key):
+                parent = node
                 node = node.right
 
             else:
                 print("The key does not exist!")
                 return
-
-
-    def insert_node(self, node, inode):
-
-        parent = node
-        while (1):
-            #print("__node__=", node)
-            if (node == None):
-                if (parent_left):
-                    parent.left = inode
-                else:
-                    parent.right = inode
-                break
-
-
-            if (node.key > ind.key):
-                parent = node
-                parent_left = True
-                node = node.left
-
-            elif (node.key < ind.key):
-                parent = node
-                parent_left = False
-                node = node.right
-
-            else:
-                print("Same Key !! Error")
-                break
 
 
     
@@ -170,6 +152,36 @@ class  BSTree(object):
            
         print("____The key=", key, "deleted")
 
+        return node
+
+
+    def insert_node(self, node, inode):
+
+        parent = node
+        while (1):
+            #print("__node__=", node)
+            if (node == None):
+                if (parent_left):
+                    parent.left = inode
+                else:
+                    parent.right = inode
+                break
+
+
+            if (node.key > ind.key):
+                parent = node
+                parent_left = True
+                node = node.left
+
+            elif (node.key < ind.key):
+                parent = node
+                parent_left = False
+                node = node.right
+
+            else:
+                print("Same Key !! Error")
+                break
+
 
 
 
@@ -178,6 +190,9 @@ class  BSTree(object):
         cnt = 0;
         if (node == None):
             node = self.root
+
+        if (node == None):
+            return 0
 
         if (node.left):
             cnt += self.count(node.left)
@@ -198,7 +213,9 @@ class  BSTree(object):
 
             if (msg):
                 print(msg)
-        
+
+        if (node == None):
+            return
 
         if (node.left):
             self.list(node.left)

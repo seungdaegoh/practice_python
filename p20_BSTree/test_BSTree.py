@@ -49,6 +49,12 @@ def test_delete():
     tree = BSTree()
 
     tree.set("old", "C program")
+    tree.delete("old")
+    assert(tree.count() == 0)
+    tree.list(None, "__No nodes__#1")
+
+
+    tree.set("old", "C program")
     tree.set("current", "Python")
     tree.set("future", "AI")
 
@@ -64,3 +70,24 @@ def test_delete():
     print("CURRENT=", tree.get("current"))
     assert(tree.get("current") == None)
 
+    assert(tree.count() == 1)
+    tree.delete("future")
+
+    tree.list(None, "__No nodes__")
+
+    tree.set("1old", "C program")
+    tree.set("2current-3", "C++")
+    tree.set("3current-2", "java script")
+
+    tree.set("4current-1", "go lang")
+    tree.set("5current", "Python")
+
+    tree.set("6current+1", "deep learning")
+    tree.set("7current+2", "machine learning")
+    tree.set("8future", "AI")
+
+    tree.list(None, "Print All ~~")
+
+    assert(tree.count() == 8)
+
+test_delete()
