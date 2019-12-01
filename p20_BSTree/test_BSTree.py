@@ -1,5 +1,30 @@
+#!/usr/bin/env python3
+#from random import randint
+import random
+import string
 
 from bstree import BSTree
+
+max_numbers = 500
+
+def randomString(stringLength=5):
+    """Generate a random string of fixed length """
+    letters = string.ascii_lowercase
+    return ''.join(random.choice(letters) for i in range(stringLength))
+
+
+
+def t_max(count):
+    tree = BSTree()
+
+    for i in range(count):
+        key = randomString()
+        value = randomString()
+        tree.set( key, value )
+
+
+t_max(10000)
+
 
 def test_set():
 
@@ -90,4 +115,4 @@ def test_delete():
 
     assert(tree.count() == 8)
 
-test_delete()
+#test_delete()
