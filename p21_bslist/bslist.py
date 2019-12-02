@@ -34,10 +34,7 @@ class  BSList(object):
                 ed_i = mi
 
             elif (node.key < key):
-                if (st_i == mi):
-                    st_i += 1
-                else:
-                    st_i = mi
+                st_i = mi + 1
 
             #if (node.key == key):
             else:
@@ -68,10 +65,13 @@ class  BSList(object):
                 ed_i = mi
 
             elif (node.key < key):
+                st_i = mi + 1
+                '''
                 if (st_i == mi):
                     st_i += 1
                 else:
                     st_i = mi
+                '''
 
             else:
                 node.value = value

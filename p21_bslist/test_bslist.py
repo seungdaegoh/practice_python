@@ -12,17 +12,28 @@ def randomString(stringLength=5):
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(stringLength))
 
-
 def t_max(count):
 
     list = BSList()
 
     for i in range(count):
-        key = randomString()
-        value = randomString()
+        key = i #randomString()
+        value = i#randomString()
         list.set( key, value )
 
-t_max(10000)
+
+    for i in range(count):
+        key = i #randomString()
+        node = list.get( key )
+        assert( key == node.value)
+
+
+if (__name__ == "__main__"):
+    import sys
+
+    print(sys.argv[1])
+    
+    t_max(int(sys.argv[1]))
 
 
 def test_set():

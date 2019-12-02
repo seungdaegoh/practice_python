@@ -1,0 +1,2 @@
+python -m cProfile  -s cumtime p20_BSTree/test_BSTree.py  3000
+python -m cProfile -s cumtime  p21_bslist/test_bslist.py  3000

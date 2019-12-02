@@ -18,12 +18,27 @@ def t_max(count):
     tree = BSTree()
 
     for i in range(count):
-        key = randomString()
-        value = randomString()
+        key = i #randomString()
+        value = i#randomString()
         tree.set( key, value )
 
+    print("done  set()")
 
-t_max(10000)
+    for i in range(count):
+        key = i #randomString()
+        node = tree.get( key )
+        assert( key == node.value)
+
+
+if (__name__ == "__main__"):
+    import sys
+
+    print(sys.argv[1])
+    
+    t_max(int(sys.argv[1]))
+
+
+
 
 
 def test_set():
