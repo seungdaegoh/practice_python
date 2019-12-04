@@ -20,13 +20,21 @@ class  suffix_array(object):
 
     def find_longest(self, word):
 
+
         return
 
 
 
     def find_all(self, word):
 
-        return
+        fw = []
+        w_len = len(word)
+        for i in range(len(self.array)):
+            if (word == self.array[i][:w_len]):
+                #print("__SEARCHED_WORD:", self.array[i])
+                fw.append( self.array[i] )
+
+        return fw
    
 
     def list(self, msg = None):

@@ -20,4 +20,13 @@ def test_find_logest():
 
 def test_find_all():
 
+    sa = suffix_array("abcdefabc")
+
+    all_word = sa.find_all("abc")
+
+    assert(all_word[0] == "abcdefabc")
+    assert(all_word[1] == "abc")
+    print("ALL_WORD=", all_word)
+    print("done with find_all")
     return
+
