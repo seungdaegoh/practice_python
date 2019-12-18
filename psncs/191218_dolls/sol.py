@@ -30,8 +30,7 @@ def get_variance(st_i, ed_i):
 
     var_tbl[st_i][ed_i] = var
 
-#    print("\nVAR=", var)
-    print("\n")
+#    print("\nVAR=", var, "\n")
     return var
 
    
@@ -45,7 +44,6 @@ for k in range(K, N+1, 1):
 
         if (min_var == -1 or min_var > r_val):
             min_var = r_val
-
 
 
 
