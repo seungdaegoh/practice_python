@@ -34,6 +34,23 @@ $  source venv/bin/activate
     or  $  .  venv/bin/activate
 ```
 
+##  Env for testing
+```
+$ pip install pytest
+$ pip install codecov
+$ pip install pytest-cov
+```
+##  testing
+```
+$  pytest
+$  pytest {test*.py}
+$  pytest  -s
+$  pytest {test*.py} -s
+
+$  pytest  --cov=my_prj/   my_prj/
+$  pytest  --cov=my_prj/   my_prj/test_refsm.py
+$  pytest  --cov=./      test_refsm.py
+```
 ##  Python Tools
 
 ```
