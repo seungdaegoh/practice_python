@@ -49,7 +49,10 @@ $  pytest {test*.py} -s
 
 $  pytest  --cov=my_prj/   my_prj/
 $  pytest  --cov=my_prj/   my_prj/test_refsm.py
-$  pytest  --cov=./      test_refsm.py
+
+$  pytest  --cov=./                       {test_refsm.py}
+$  pytest  --cov=./  --cov-report html    {test_refsm.py}
+$  pytest  --cov=./  --cov-report xml
 ```
 ##  Python Tools
 
