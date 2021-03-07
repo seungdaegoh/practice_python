@@ -32,13 +32,40 @@ def get_append_str(in_word):
 def main(cmd, line, SET1, SET2=None):
     if ('simply' in cmd):
         simply = True
+    else:
+        simply = False
 
+    if ('delete' in cmd):
+        delete = True
+    else:
+        delete = False
 
     SET1a = get_append_str(SET1)
     print("SET1a=", SET1a)
+    SET2a = None
     if (SET2):
         SET2a = get_append_str(SET2)
-        print("SETa=", SET2a)
+        print("SET2a=", SET2a)
+
+    if (simply and delete):
+        return "Error conflict command"
+
+    if ((simply or delete) and SET2a):
+        return "Error : no need SET2= " + SET2a + " str in this(-s, -d) flag"
+
+    if (simply == False and delete == False):
+        trans = True
+    else:
+        trans = False
+
+    if (trans == True):
+        if (SET2a == None):
+            print("Error SET is None")
+            return None
+        if (len(SET1a) != len(SET2a)):
+            print("Error SET1 and SET2 is different len")
+            return None
+
 
     out_str = ''
     before_ch = None
@@ -48,6 +75,13 @@ def main(cmd, line, SET1, SET2=None):
 
         if (simply and ch == before_ch and (ch in SET1a)):
             continue
+
+        if (delete and (ch in SET1a)):
+            continue
+
+        if (trans and  (ch in SET1a)):
+            idx = SET1a.index(ch)
+            ch = SET2a[idx]
 
         out_str += ch
         before_ch = ch
