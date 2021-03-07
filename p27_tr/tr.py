@@ -119,6 +119,7 @@ if __name__ == "__main__":
         SET2_str = args.SET1[1]
         print("args.SET2_str=", SET2_str)
 
+    '''
     lines =''
     while True:
         try:
@@ -128,5 +129,11 @@ if __name__ == "__main__":
             break
 
     lines += line
+    '''
+    #lines = input()
+    try:
+        lines = sys.stdin.readlines()
+    except KeyboardInterrupt:
+        print("Endof readlines()")
 
     main (cmd, lines, SET1_str, SET2_str)

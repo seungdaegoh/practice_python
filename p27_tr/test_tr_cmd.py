@@ -2,13 +2,12 @@ import subprocess
 import sys
 import tr
 
-'''
 def test_tr_cmd():
-    exec = "python tr.py -s a-z"
+    exec = "python tr.py -s a-z < testin.txt"
     print( exec )
     output = subprocess.run(exec,  stdout=subprocess.PIPE)
     print(output)
-'''
+
 
 def test_main():
     cmd = ["simply"]
@@ -54,6 +53,9 @@ def test_translate():
     assert (tr.main(cmd, "abcdzzzABCDZZZ", 'A-Z', 'a-z') == 'abcdzzzabcdzzz')
     assert (tr.main(cmd, "My\nUID is\n1004", '\n', ' ') == 'My UID is 1004')
     assert (tr.main(cmd, "My UID is 1004", ' ', ':') == 'My:UID:is:1004')
+
+
+
 
 
 
