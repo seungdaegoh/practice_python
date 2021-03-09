@@ -1,0 +1,6 @@
+echo "xxx"
+echo "aaa"
+copy sh.py sh2.py
+move  sh2.py  sh3.py
+del sh3.py
+
