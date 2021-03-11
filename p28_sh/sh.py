@@ -1,5 +1,6 @@
 
 import os
+import readline
 import sys
 import subprocess
 
