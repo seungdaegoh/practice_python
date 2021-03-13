@@ -19,6 +19,14 @@ def main():
         while True:
             s = input('>> ').strip()
             print('[{0}]'.format(s))
+
+            if (s == 'h'):
+                print("histoy -----")
+                cnt = readline.get_current_history_length()
+                print("cnt=", cnt)
+                for i in range(cnt):
+                    print(readline.get_history_item(i))
+                print('endof history')
     except (EOFError, KeyboardInterrupt) as e:
         print('\nShutting down...')
 
