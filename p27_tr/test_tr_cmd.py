@@ -13,6 +13,10 @@ def test_main():
     cmd = ["simply"]
     tr.main(cmd,  "abc", 'a')
 
+def test_str_append():
+    r_str = tr.get_append_str("a-g")
+    assert("abcdefg" == r_str)
+
 def test_simply():
     cmd = ["simply"]
     assert (tr.main(cmd, "aaaa", 'a') == 'a')

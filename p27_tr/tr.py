@@ -106,12 +106,6 @@ if __name__ == "__main__":
     elif (args.delete):
         cmd.append("delete")
 
-    '''
-    print( args.simply)
-    print( args.delete)
-    print( args.SET1)
-    '''
-
 
     SET1_str = args.SET1[0]
     print("args.SET1_str=", SET1_str)

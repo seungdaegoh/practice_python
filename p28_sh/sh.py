@@ -1,6 +1,7 @@
 
 import os
-import readline
+#  readline  is only supported in Linux
+#import readline
 import sys
 import subprocess
 
@@ -11,13 +12,15 @@ def run_cmd(exec_line):
     #output = subprocess.check_output(exec_line, shell=True, encoding='utf-8')
     out = subprocess.check_output(exec_line, shell=True, encoding='EUC-KR')
     print(out)
+    return out
 
 
 #print("argv", sys.argv)
 #if (len(sys.argv)> 1):
 #    run_cmd(sys.argv[1:])
 
-try:
+#try:
+def main():
     while True:
         line = input() # sys.stdin.readline()
         if (line == 'exit\n'):
@@ -29,15 +32,14 @@ try:
         elif line == None:
             print("none")
             break
-        elif (line == 'h'):
-            print("histoy -----")
-            cnt = readline.get_current_history_length()
-            print("cnt=", cnt)
-            for i in range(cnt):
-                print(readline.get_history_item(i))
-            print('------endof history')
-            continue
-
+        # elif (line == 'h'):
+        #     print("histoy -----")
+        #     cnt = readline.get_current_history_length()
+        #     print("cnt=", cnt)
+        #     for i in range(cnt):
+        #         print(readline.get_history_item(i))
+        #     print('------endof history')
+        #     continue
         elif line == '\n':
             continue
 
@@ -45,5 +47,8 @@ try:
         #print(cmd_ls)
         run_cmd(line)
 
-except (EOFError, KeyboardInterrupt) as e:
-    print('\nShutting down...')
+#except (EOFError, KeyboardInterrupt) as e:
+#    print('\nShutting down...')
+
+if __name__ == "__main__":
+    main()
