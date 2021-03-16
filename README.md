@@ -68,6 +68,17 @@ $  pytest  --cov=./  --cov-report=annotate
 ```
 
 
+## Refactorying
+```
+	pylint 사용
+	
+	Function Call
+		-->  Python Call Graph
+		pycallgraph
+		$   pycallgraph graphviz -- ./mypythonscript.py
+    
+```
+
 ## idea
 
   + Log Analayzer (LA)
