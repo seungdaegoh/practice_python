@@ -1,4 +1,4 @@
-
+## Ctrl+C   exit
 ```
 import signal
 import time
