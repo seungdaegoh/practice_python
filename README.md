@@ -31,8 +31,10 @@ $  sudo pip install virtualenv
 
 $  virtualenv venv
 
+```
 ### "execute it for doing with python per every login"
 
+```
 $  source venv/bin/activate
 
     or  $  .  venv/bin/activate
