@@ -29,15 +29,15 @@
 ```
 $  sudo pip install virtualenv
 
-$  virtualenv venv
+$  virtualenv myvenv
 
 ```
 ### "execute it for doing with python per every login"
 
 ```
-$  source venv/bin/activate
+$  source myvenv/bin/activate
 
-    or  $  .  venv/bin/activate
+    or  $  .  myvenv/bin/activate
 ```
 
 ##  Env for testing
