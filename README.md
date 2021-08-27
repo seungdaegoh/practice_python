@@ -22,12 +22,16 @@
                         '<img src="img/attachment-icon.png" style="width:32px; height:32px;">']
 ```
 
-##  Environment
+## setup Environment
+
+### "only do it once"
 
 ```
 $  sudo pip install virtualenv
 
 $  virtualenv venv
+
+### "execute it for doing with python per every login"
 
 $  source venv/bin/activate
 
